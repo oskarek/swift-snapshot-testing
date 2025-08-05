@@ -21,13 +21,15 @@
     ///     human eye.
     ///   - size: A view size override.
     ///   - traits: A trait collection override.
+    ///   - delay: A time in seconds, for how long to wait before taking snapshot.
     public static func image(
       on config: ViewImageConfig,
       drawHierarchyInKeyWindow: Bool = false,
       precision: Float = 1,
       perceptualPrecision: Float = 1,
       size: CGSize? = nil,
-      traits: UITraitCollection = .init()
+      traits: UITraitCollection = .init(),
+      delay: TimeInterval? = nil
     )
       -> Snapshotting
     {
@@ -41,7 +43,8 @@
           drawHierarchyInKeyWindow: drawHierarchyInKeyWindow,
           traits: traits,
           view: viewController.view,
-          viewController: viewController
+          viewController: viewController,
+          delay: delay
         )
       }
     }
@@ -59,12 +62,14 @@
     ///     human eye.
     ///   - size: A view size override.
     ///   - traits: A trait collection override.
+    ///   - delay: A time in seconds, for how long to wait before taking snapshot.
     public static func image(
       drawHierarchyInKeyWindow: Bool = false,
       precision: Float = 1,
       perceptualPrecision: Float = 1,
       size: CGSize? = nil,
-      traits: UITraitCollection = .init()
+      traits: UITraitCollection = .init(),
+      delay: TimeInterval? = nil
     )
       -> Snapshotting
     {
@@ -77,7 +82,8 @@
           drawHierarchyInKeyWindow: drawHierarchyInKeyWindow,
           traits: traits,
           view: viewController.view,
-          viewController: viewController
+          viewController: viewController,
+          delay: delay
         )
       }
     }
