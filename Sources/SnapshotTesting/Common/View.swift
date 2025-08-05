@@ -990,7 +990,8 @@
         (view.snapshot
         ?? Async { callback in
           addImagesForRenderedViews(view).sequence().run { views in
-            DispatchQueue.main.asyncAfter(deadline: .now() + (delay ?? 0)) {
+            Task { @MainActor in
+              try await Task.sleep(nanoseconds: NSEC_PER_SEC * UInt64(delay ?? 0))
               callback(
                 renderer(bounds: view.bounds, for: traits).image { ctx in
                   if drawHierarchyInKeyWindow {
